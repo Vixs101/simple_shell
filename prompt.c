@@ -13,12 +13,13 @@ int main(void)
 	size_t bufsize = 0;
 
 	write(STDOUT_FILENO, "$ ", 2);
-	if (getline(&buffer, &bufsize, stdin) != -1)
+	if (my_getline(&buffer, &bufsize, 0) != -1)
 	{
 		write(STDOUT_FILENO, buffer, strlen(buffer));
 	}
 
-	write(STDOUT_FILENO, "$\n", 2);
+	write(STDOUT_FILENO, "\n$", 2);
+	write(STDOUT_FILENO, "\n", 1);
 	free(buffer);
 	return (0);
 }

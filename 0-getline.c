@@ -38,11 +38,17 @@ ssize_t my_getline(char **lineptr, size_t *n, int fd)
 			*lineptr = newBuffer;
 			*n = newSize;
 		}
-		(*lineptr)[i++] = (char)bytesRead;
-
 		if ((*lineptr)[i] == '\n')
-			break;
+		{
+			(*lineptr)[i] = '\0';
+			return (i);
+		}
+		i++;
+		if (bytesRead == 0 && i > 0)
+		{
+			(*lineptr)[i] = '\0';
+			return (i);
+		}
 	}
-	(*lineptr)[i] = '\0';
-	return (i);
+	return (-1);
 }
