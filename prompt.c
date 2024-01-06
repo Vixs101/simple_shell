@@ -18,7 +18,6 @@ int main(void)
 		write(STDOUT_FILENO, buffer, strlen(buffer));
 	}
 
-	write(STDOUT_FILENO, "\n$", 2);
 	write(STDOUT_FILENO, "\n", 1);
 	free(buffer);
 	return (0);
