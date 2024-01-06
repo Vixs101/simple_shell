@@ -9,8 +9,13 @@
 int main(void)
 {
 	pid_t myPpid;
+	char pidString[20];
 
 	myPpid = getppid();
-	printf("%u\n", myPpid);
+
+	snprintf(pidString, sizeof(pidString), "%d", myPpid);
+
+	write(STDOUT_FILENO, pidString, strlen(pidString));
+	write(STDOUT_FILENO,"\n", 1);
 	return (0);
 }
