@@ -6,10 +6,11 @@
  * buffer where the line will be stored
  * @n: a pointer to a size_t variable. it represents size of the buffer
  * pointed by lineptr.
+ * @fd: file descriptor of the stream to read from
  * Return: on success, returns Number of characters read
  */
 
-ssize_t getline(char **lineptr, size_t *n, int fd)
+ssize_t my_getline(char **lineptr, size_t *n, int fd)
 {
 	size_t i = 0;
 	size_t newSize;
@@ -19,7 +20,7 @@ ssize_t getline(char **lineptr, size_t *n, int fd)
 	if (lineptr == NULL || n == NULL || *n == 0)
 	{
 		*lineptr = (char *)malloc(128);
-		
+
 		if (*lineptr == NULL)
 			return (-1);
 		*n = 128;
@@ -27,7 +28,7 @@ ssize_t getline(char **lineptr, size_t *n, int fd)
 
 	while ((bytesRead = read(fd, &lineptr, &n)
 	{
-		if (i == (*n-1))
+		if (i == (*n - 1))
 		{
 			newSize = *n * 2;
 			newBuffer = realloc(*lineptr, newSize);
