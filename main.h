@@ -9,6 +9,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t getline(char **lineptr, size_t *n, int fd);
 
 #endif /*MAIN_H*/
