@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * getline - a function similar to the standard library function.
+ * my_getline - a function similar to the standard library function.
  * @lineptr: pointer to a char pointer used to hold the address of the
  * buffer where the line will be stored
  * @n: a pointer to a size_t variable. it represents size of the buffer
@@ -26,7 +26,7 @@ ssize_t my_getline(char **lineptr, size_t *n, int fd)
 		*n = 128;
 	}
 
-	while ((bytesRead = read(fd, &lineptr, &n)
+	while ((bytesRead = read(fd, *lineptr + i, 1) > 0))
 	{
 		if (i == (*n - 1))
 		{
@@ -39,9 +39,10 @@ ssize_t my_getline(char **lineptr, size_t *n, int fd)
 			*n = newSize;
 		}
 		(*lineptr)[i++] = (char)bytesRead;
-		if (bytesRead == "\n")
+
+		if ((*lineptr)[i] == '\n')
 			break;
 	}
-	(*lineptr)[i] = "\0";
+	(*lineptr)[i] = '\0';
 	return (i);
 }

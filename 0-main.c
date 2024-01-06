@@ -15,12 +15,13 @@ int main(void)
 	printf("Enter lines of text. Press Ctrl+D (or Ctrl+Z on Windows) to end:\n");
 	while ((read = my_getline(&line, &len, 0)) != -1)
 	{
-		if (read > 0)
+		if (read == 0)
 		{
-			printf("Read %zd characters: %s", read, line);
+			printf("Read %lu characters: %s", (unsigned long)read, line);
 		}
 		else
 		{
+			printf("Read %lu characters: %s", (unsigned long)read, line);
 			printf("No more lines to read.\n");
 			break;
 		}
