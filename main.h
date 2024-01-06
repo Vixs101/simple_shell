@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <stddef.h>
 
-char *myStrtok(char *str, char delim)
+char *my_strtok(char *str, char delim)
 ssize_t my_getline(char **lineptr, size_t *n, int fd);
-
+char *my_strtok(char *str, char delim);
 #endif /*MAIN_H*/
